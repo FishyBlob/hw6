@@ -19,7 +19,7 @@ void adjust(uint8_t p, int64_t *ptr,uint8_t change)
 	*(ptr2+pos-1)=change;
 	return;
 }
-char blank( char c)
+char blank( int c)
 {
 	if(c==' ')
 	{
@@ -28,8 +28,21 @@ char blank( char c)
 	else
 		return c;
 }
+int chk(int input, int64_t *ptr, int64_t top,int64_t bot)
+{
+	if(input==1)
+	{
+		printf("%d\n",input );
+		if(*ptr>top||*ptr<bot)
+		{
+			return 0;
+		}
+	}
+	return input;
+}
 int main()
 {
+
 	int64_t n;
 	int64_t choice;
 	printf("Please input the integer: ");
@@ -55,10 +68,11 @@ int main()
 	}
 	while(choice>0)
 	{
-		uint64_t change;
+		int64_t change=-1;
 		printf("Please enter the new value (0-255): " );
-		while(scanf("%ld",&change)!=1||blank(getchar())!='\n'||change>255||change<0)
+		while(scanf("%ld",&change)!=1|| blank(getchar())!='\n'||change>255||change<0)
 		{
+
 			while(blank(getchar())!='\n')
 			{
 				int8_t a=1;
@@ -66,7 +80,7 @@ int main()
 			printf("Error:Invlaid input\n");
 			printf("Please enter the new value (0-255): " );
 		}
-		adjust((uint8_t)choice,&n,change);
+		adjust((uint8_t)choice,&n,(uint8_t)change);
 		display(&n);
 		printf("Please enter the position (1-8, 0: End): ");
 		while(scanf("%ld",&choice)!=1||blank(getchar())!='\n'||choice>8||choice<0)
