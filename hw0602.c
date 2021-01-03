@@ -10,7 +10,7 @@ int main()
 	{
 		int64_t input;
 		printf("input: ");
-		while(scanf("%lld",&input)!=1||input<-2||blank(getchar())!='\n')
+		while(scanf("%ld",&input)!=1||input<-2||blank(getchar())!='\n')
 		{
 			while(blank(getchar())!='\n')
 			{
@@ -33,7 +33,7 @@ int main()
 		if(buffer[i][0]==0)
 			break;
 		if(buffer[i][1]==0)
-			printf(" %lld",buffer[i][0]);
+			printf(" %ld",buffer[i][0]);
 	}
 	printf("\n");
 	return 0;
